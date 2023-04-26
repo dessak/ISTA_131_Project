@@ -1,0 +1,3 @@
+This repositroy contains a jupyter notebook (Tucson Weather.ipynb) that uses an API request to get weather data from select Tucson weather stations.
+It then creates a database and further tranforms the data to prepare for making select figures. A python file that only contins the necessary
+data transformations calling on the previouly created database to make the figures. Figures are included as 3 seperate PDFs and a combined image file.

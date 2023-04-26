@@ -1,0 +1,38 @@
+I chose to get Tucson weather data form a handful of stations that represented a cross section of the valley as well as spanning as much time as I could.
+I did this because I was curious to see if there was any information that oculd be cleaned about what might cause extended periods
+of windier than average days.
+
+url = 'https://www.ncei.noaa.gov/access/services/data/v1'
+params = {
+    'dataset': 'daily-summaries',
+    'dataTypes': ['ACMH', 'ACSH', 'ADPT', 'ASLP', 'ASTP', 'AWBT', 'AWND', 'DAEV', 'DAPR', 'DAWM', 'EVAP', 'FMTM', 'FRGT', 'MDEV', 'MDPR',
+                            'MDWM', 'MNPN', 'MXPN', 'PGTM', 'PRCP', 'PSUN', 'RHAV', 'RHMN', 'RHMX', 'SNOW', 'SNWD', 'TAVG', 'THIC', 'TMAX', 'TMIN',
+                            'TOBS', 'TSUN', 'WDF1', 'WDF2', 'WDF5', 'WDFG', 'WDFM', 'WDMV', 'WESD', 'WESF', 'WSF1', 'WSF2', 'WSF5', 'WSFG', 'WSFM',
+                            'WT01', 'WT02', 'WT03', 'WT04', 'WT05', 'WT06', 'WT07', 'WT08', 'WT09', 'WT10', 'WT11', 'WT13', 'WT14', 'WT16', 'WT18',
+                            'WT19', 'WT21', 'WT22', 'WV03'],
+    'stations': ['US1AZPM0003',
+            'USC00028817',
+            'USC00028590',
+            'USC00028815',
+            'USC00022159',
+            'USW00023160',
+            'USW00023109',
+            'USC00028800',
+            'USC00028796',
+            'USC00027355'],
+    'startDate': '1893-01-01',
+    'endDate': '2023-04-13',
+    'boundingBox': '90,-180,-90,180',
+    'includeAttributes': True,
+    'includeStationName': True,
+    'includeStationLocation': True,
+    'units': 'metric',
+    'format': 'csv'
+}
+response = requests.get(url, params=params)
+
+if response.status_code == 200:
+    csv_data = response.text
+
+else:
+    print('Error:', response.status_code)
